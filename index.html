@@ -2,13 +2,14 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Compte à Rebours + Tweets Fabrizio</title>
+  <title>Compte à Rebours + Fabrizio Romano</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
   <style>
     * {
       box-sizing: border-box;
     }
+
     body {
       margin: 0;
       background: #ffffff;
@@ -20,7 +21,7 @@
       align-items: flex-start;
       gap: 40px;
       padding: 40px;
-      height: 100vh;
+      flex-wrap: wrap;
     }
 
     .logo {
@@ -38,6 +39,8 @@
       display: flex;
       gap: 2rem;
       margin-top: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .flip-unit {
@@ -74,9 +77,16 @@
     }
 
     .twitter-container {
-      margin-top: 40px;
       max-width: 400px;
       width: 100%;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -124,17 +134,26 @@
     </div>
   </div>
 
-  <!-- Partie droite : Timeline Twitter native -->
+  <!-- Partie droite : encart Twitter -->
   <div class="twitter-container">
     <a class="twitter-timeline"
-       data-theme="light"
        data-height="600"
+       data-theme="light"
        href="https://twitter.com/FabrizioRomano?ref_src=twsrc%5Etfw">
       Tweets de @FabrizioRomano
     </a>
+
+    <!-- Fallback si Twitter bloque l'embed -->
+    <noscript>
+      <p>
+        <a href="https://twitter.com/FabrizioRomano" target="_blank">
+          Voir les tweets de @FabrizioRomano
+        </a>
+      </p>
+    </noscript>
   </div>
 
-  <!-- Script Twitter officiel -->
+  <!-- Script officiel Twitter -->
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
   <!-- Script du compteur -->
