@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Compte à Rebours - Style Clapet Premier League</title>
+  <title>Compte à Rebours + Tweets Fabrizio</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
   <style>
@@ -15,11 +15,12 @@
       color: #37003c;
       font-family: 'Orbitron', monospace;
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      flex-direction: row;
       justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 40px;
       height: 100vh;
-      position: relative;
     }
 
     .logo {
@@ -27,9 +28,16 @@
       margin-bottom: 40px;
     }
 
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     .flip-clock {
       display: flex;
       gap: 2rem;
+      margin-top: 40px;
     }
 
     .flip-unit {
@@ -64,55 +72,74 @@
       font-size: 1.5rem;
       color: #3d195b;
     }
+
+    .twitter-container {
+      margin-top: 40px;
+      max-width: 400px;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
-  <!-- Logo Premier League -->
-  <img src="Premier_League_Logo.svg.png" alt="Premier League Logo" class="logo">
+  <!-- Partie gauche : compteur -->
+  <div class="main-content">
+    <img src="Premier_League_Logo.svg.png" alt="Premier League Logo" class="logo">
 
-  <!-- Compteur style clapet -->
-  <div class="flip-clock">
-    <!-- JOURS -->
-    <div class="flip-unit">
-      <div class="flip-digits">
-        <div id="d1" class="flip-card">0</div>
-        <div id="d2" class="flip-card">0</div>
+    <div class="flip-clock">
+      <!-- Jours -->
+      <div class="flip-unit">
+        <div class="flip-digits">
+          <div id="d1" class="flip-card">0</div>
+          <div id="d2" class="flip-card">0</div>
+        </div>
+        <div class="label">Jours</div>
       </div>
-      <div class="label">Jours</div>
-    </div>
 
-    <!-- HEURES -->
-    <div class="flip-unit">
-      <div class="flip-digits">
-        <div id="h1" class="flip-card">0</div>
-        <div id="h2" class="flip-card">0</div>
+      <!-- Heures -->
+      <div class="flip-unit">
+        <div class="flip-digits">
+          <div id="h1" class="flip-card">0</div>
+          <div id="h2" class="flip-card">0</div>
+        </div>
+        <div class="label">Heures</div>
       </div>
-      <div class="label">Heures</div>
-    </div>
 
-    <!-- MINUTES -->
-    <div class="flip-unit">
-      <div class="flip-digits">
-        <div id="m1" class="flip-card">0</div>
-        <div id="m2" class="flip-card">0</div>
+      <!-- Minutes -->
+      <div class="flip-unit">
+        <div class="flip-digits">
+          <div id="m1" class="flip-card">0</div>
+          <div id="m2" class="flip-card">0</div>
+        </div>
+        <div class="label">Minutes</div>
       </div>
-      <div class="label">Minutes</div>
-    </div>
 
-    <!-- SECONDES -->
-    <div class="flip-unit">
-      <div class="flip-digits">
-        <div id="s1" class="flip-card">0</div>
-        <div id="s2" class="flip-card">0</div>
+      <!-- Secondes -->
+      <div class="flip-unit">
+        <div class="flip-digits">
+          <div id="s1" class="flip-card">0</div>
+          <div id="s2" class="flip-card">0</div>
+        </div>
+        <div class="label">Secondes</div>
       </div>
-      <div class="label">Secondes</div>
     </div>
   </div>
 
+  <!-- Partie droite : Timeline Twitter native -->
+  <div class="twitter-container">
+    <a class="twitter-timeline"
+       data-theme="light"
+       data-height="600"
+       href="https://twitter.com/FabrizioRomano?ref_src=twsrc%5Etfw">
+      Tweets de @FabrizioRomano
+    </a>
+  </div>
+
+  <!-- Script Twitter officiel -->
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  <!-- Script du compteur -->
   <script>
     const { DateTime } = luxon;
-
-    // Date cible : 16 août 2025 à 13h00 Europe/Madrid
     const target = DateTime.fromObject(
       { year: 2025, month: 8, day: 16, hour: 13, minute: 0 },
       { zone: 'Europe/Madrid' }
