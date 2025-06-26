@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Compte à Rebours - Style Clapet Premier League</title>
+  <title>Compte à Rebours - Matchs</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
   <style>
@@ -18,13 +18,38 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      height: auto;
       position: relative;
+      padding: 50px 0;
     }
 
     .logo {
       max-width: 300px;
       margin-bottom: 40px;
+    }
+
+    .match-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 50px;
+    }
+
+    .club-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      gap: 20px;
+    }
+
+    .club-logo {
+      max-width: 150px;
+    }
+
+    .club-name {
+      font-family: 'Orbitron', monospace;
+      font-size: 2.5rem;
+      color: #3d195b;
     }
 
     .flip-clock {
@@ -67,56 +92,94 @@
   </style>
 </head>
 <body>
-  <!-- Logo Premier League -->
   <img src="Premier_League_Logo.svg.png" alt="Premier League Logo" class="logo">
 
-  <!-- Compteur style clapet -->
-  <div class="flip-clock">
-    <!-- JOURS -->
-    <div class="flip-unit">
-      <div class="flip-digits">
-        <div id="d1" class="flip-card">0</div>
-        <div id="d2" class="flip-card">0</div>
-      </div>
-      <div class="label">Jours</div>
+  <!-- Match contre Leeds -->
+  <div class="match-container">
+    <div class="club-info">
+      <img src="leeds.png" alt="Leeds Logo" class="club-logo">
+      <div class="club-name">Leeds United</div>
     </div>
-
-    <!-- HEURES -->
-    <div class="flip-unit">
-      <div class="flip-digits">
-        <div id="h1" class="flip-card">0</div>
-        <div id="h2" class="flip-card">0</div>
+    <div class="flip-clock">
+      <div class="flip-unit">
+        <div class="flip-digits">
+          <div id="d1b" class="flip-card">0</div>
+          <div id="d2b" class="flip-card">0</div>
+        </div>
+        <div class="label">Jours</div>
       </div>
-      <div class="label">Heures</div>
+      <div class="flip-unit">
+        <div class="flip-digits">
+          <div id="h1b" class="flip-card">0</div>
+          <div id="h2b" class="flip-card">0</div>
+        </div>
+        <div class="label">Heures</div>
+      </div>
+      <div class="flip-unit">
+        <div class="flip-digits">
+          <div id="m1b" class="flip-card">0</div>
+          <div id="m2b" class="flip-card">0</div>
+        </div>
+        <div class="label">Minutes</div>
+      </div>
+      <div class="flip-unit">
+        <div class="flip-digits">
+          <div id="s1b" class="flip-card">0</div>
+          <div id="s2b" class="flip-card">0</div>
+        </div>
+        <div class="label">Secondes</div>
+      </div>
     </div>
+  </div>
 
-    <!-- MINUTES -->
-    <div class="flip-unit">
-      <div class="flip-digits">
-        <div id="m1" class="flip-card">0</div>
-        <div id="m2" class="flip-card">0</div>
-      </div>
-      <div class="label">Minutes</div>
+  <!-- Match contre Arsenal -->
+  <div class="match-container">
+    <div class="club-info">
+      <img src="arsenal.png" alt="Arsenal Logo" class="club-logo">
+      <div class="club-name">Arsenal</div>
     </div>
-
-    <!-- SECONDES -->
-    <div class="flip-unit">
-      <div class="flip-digits">
-        <div id="s1" class="flip-card">0</div>
-        <div id="s2" class="flip-card">0</div>
+    <div class="flip-clock">
+      <div class="flip-unit">
+        <div class="flip-digits">
+          <div id="d1" class="flip-card">0</div>
+          <div id="d2" class="flip-card">0</div>
+        </div>
+        <div class="label">Jours</div>
       </div>
-      <div class="label">Secondes</div>
+      <div class="flip-unit">
+        <div class="flip-digits">
+          <div id="h1" class="flip-card">0</div>
+          <div id="h2" class="flip-card">0</div>
+        </div>
+        <div class="label">Heures</div>
+      </div>
+      <div class="flip-unit">
+        <div class="flip-digits">
+          <div id="m1" class="flip-card">0</div>
+          <div id="m2" class="flip-card">0</div>
+        </div>
+        <div class="label">Minutes</div>
+      </div>
+      <div class="flip-unit">
+        <div class="flip-digits">
+          <div id="s1" class="flip-card">0</div>
+          <div id="s2" class="flip-card">0</div>
+        </div>
+        <div class="label">Secondes</div>
+      </div>
     </div>
   </div>
 
   <script>
     const { DateTime } = luxon;
 
-    // Date cible : 15 août 2025 à 21h00 Europe/Madrid
-    const target = DateTime.fromObject(
-      { year: 2025, month: 8, day: 15, hour: 21, minute: 0 },
-      { zone: 'Europe/Madrid' }
-    );
+    const targetLeeds = DateTime.fromObject(
+      { year: 2025, month: 7, day: 19, hour: 15, minute: 0 }
+    ).setZone('Europe/Madrid');
+
+    const targetArsenal = DateTime.fromObject(
+      { year: 2025, month: 8, day: 15, hour: 21, minute: 0 }
+    ).setZone('Europe/Madrid');
 
     function updateDigit(id, value) {
       const el = document.getElementById(id);
@@ -129,32 +192,38 @@
       }
     }
 
-    function updateCountdown() {
+    function updateCountdown(target, prefix) {
       const now = DateTime.now().setZone('Europe/Madrid');
-      const diff = target.diff(now, ['days', 'hours', 'minutes', 'seconds']).toObject();
 
-      if (diff.seconds < 0) {
-        ['d1','d2','h1','h2','m1','m2','s1','s2'].forEach(id => updateDigit(id, '0'));
+      if (target < now) {
+        ['d1','d2','h1','h2','m1','m2','s1','s2'].forEach(id => updateDigit(id + prefix, '0'));
         return;
       }
+
+      const diff = target.diff(now, ['days', 'hours', 'minutes', 'seconds']).toObject();
 
       const days = String(Math.floor(diff.days)).padStart(2, '0');
       const hours = String(Math.floor(diff.hours)).padStart(2, '0');
       const minutes = String(Math.floor(diff.minutes)).padStart(2, '0');
       const seconds = String(Math.floor(diff.seconds)).padStart(2, '0');
 
-      updateDigit('d1', days[0]);
-      updateDigit('d2', days[1]);
-      updateDigit('h1', hours[0]);
-      updateDigit('h2', hours[1]);
-      updateDigit('m1', minutes[0]);
-      updateDigit('m2', minutes[1]);
-      updateDigit('s1', seconds[0]);
-      updateDigit('s2', seconds[1]);
+      updateDigit('d1' + prefix, days[0]);
+      updateDigit('d2' + prefix, days[1]);
+      updateDigit('h1' + prefix, hours[0]);
+      updateDigit('h2' + prefix, hours[1]);
+      updateDigit('m1' + prefix, minutes[0]);
+      updateDigit('m2' + prefix, minutes[1]);
+      updateDigit('s1' + prefix, seconds[0]);
+      updateDigit('s2' + prefix, seconds[1]);
     }
 
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    setInterval(() => {
+      updateCountdown(targetLeeds, 'b');
+      updateCountdown(targetArsenal, '');
+    }, 1000);
+
+    updateCountdown(targetLeeds, 'b');
+    updateCountdown(targetArsenal, '');
   </script>
 </body>
 </html>
