@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Compte à Rebours - Matchs</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Compte à Rebours - Match Arsenal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       background: #ffffff;
@@ -18,55 +17,26 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: auto;
+      min-height: 100vh;
       position: relative;
-      padding: 50px 0;
+      padding: 40px 12px;
     }
 
-    .logo {
-      max-width: 300px;
-      margin-bottom: 40px;
-    }
+    .logo { max-width: 300px; margin-bottom: 32px; height: auto; }
 
-    .match-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 50px;
-    }
+    .match-container { display: flex; flex-direction: column; align-items: center; gap: 18px; }
 
-    .club-info {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-      gap: 20px;
-    }
+    .club-info { display: flex; align-items: center; gap: 20px; }
 
-    .club-logo {
-      max-width: 150px;
-    }
+    .club-logo { max-width: 120px; height: auto; }
 
-    .club-name {
-      font-family: 'Orbitron', monospace;
-      font-size: 2.5rem;
-      color: #3d195b;
-    }
+    .club-name { font-size: 2.2rem; color: #3d195b; }
 
-    .flip-clock {
-      display: flex;
-      gap: 2rem;
-    }
+    .flip-clock { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
 
-    .flip-unit {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    .flip-unit { display: flex; flex-direction: column; align-items: center; }
 
-    .flip-digits {
-      display: flex;
-      gap: 0.5rem;
-    }
+    .flip-digits { display: flex; gap: 0.5rem; }
 
     .flip-card {
       background: #3d195b;
@@ -76,68 +46,33 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 6rem;
-      color: white;
+      font-size: 4.5rem;
+      line-height: 1;
+      color: #ffffff;
       transform-style: preserve-3d;
       transition: transform 0.3s ease-in-out;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), inset 0 -4px 8px rgba(0,0,0,0.2);
     }
 
-    .label {
-      text-align: center;
-      margin-top: 15px;
-      font-size: 1.5rem;
-      color: #3d195b;
+    .label { text-align: center; margin-top: 12px; font-size: 1.2rem; color: #3d195b; }
+
+    /* Responsive tweaks */
+    @media (max-width: 480px) {
+      .flip-card { width: 64px; height: 96px; font-size: 3.5rem; }
+      .club-name { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
-  <img src="Premier_League_Logo.svg.png" alt="Premier League Logo" class="logo">
+  <!-- Remplace les chemins d'image par tes fichiers réels -->
+  <img src="Premier_League_Logo.svg.png" alt="Logo Premier League" class="logo" />
 
-  <!-- Match contre Leeds -->
   <div class="match-container">
     <div class="club-info">
-      <img src="leeds.png" alt="Leeds Logo" class="club-logo">
-      <div class="club-name">Leeds United</div>
-    </div>
-    <div class="flip-clock">
-      <div class="flip-unit">
-        <div class="flip-digits">
-          <div id="d1b" class="flip-card">0</div>
-          <div id="d2b" class="flip-card">0</div>
-        </div>
-        <div class="label">Jours</div>
-      </div>
-      <div class="flip-unit">
-        <div class="flip-digits">
-          <div id="h1b" class="flip-card">0</div>
-          <div id="h2b" class="flip-card">0</div>
-        </div>
-        <div class="label">Heures</div>
-      </div>
-      <div class="flip-unit">
-        <div class="flip-digits">
-          <div id="m1b" class="flip-card">0</div>
-          <div id="m2b" class="flip-card">0</div>
-        </div>
-        <div class="label">Minutes</div>
-      </div>
-      <div class="flip-unit">
-        <div class="flip-digits">
-          <div id="s1b" class="flip-card">0</div>
-          <div id="s2b" class="flip-card">0</div>
-        </div>
-        <div class="label">Secondes</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Match contre Arsenal -->
-  <div class="match-container">
-    <div class="club-info">
-      <img src="arsenal.png" alt="Arsenal Logo" class="club-logo">
+      <img src="arsenal.png" alt="Logo Arsenal" class="club-logo" />
       <div class="club-name">Arsenal</div>
     </div>
+
     <div class="flip-clock">
       <div class="flip-unit">
         <div class="flip-digits">
@@ -146,6 +81,7 @@
         </div>
         <div class="label">Jours</div>
       </div>
+
       <div class="flip-unit">
         <div class="flip-digits">
           <div id="h1" class="flip-card">0</div>
@@ -153,6 +89,7 @@
         </div>
         <div class="label">Heures</div>
       </div>
+
       <div class="flip-unit">
         <div class="flip-digits">
           <div id="m1" class="flip-card">0</div>
@@ -160,6 +97,7 @@
         </div>
         <div class="label">Minutes</div>
       </div>
+
       <div class="flip-unit">
         <div class="flip-digits">
           <div id="s1" class="flip-card">0</div>
@@ -173,16 +111,15 @@
   <script>
     const { DateTime } = luxon;
 
-    const targetLeeds = DateTime.fromObject(
-      { year: 2025, month: 7, day: 19, hour: 15, minute: 0 }
-    ).setZone('Europe/Madrid');
-
+    // Heure du match (Europe/Zurich)
     const targetArsenal = DateTime.fromObject(
-      { year: 2025, month: 8, day: 15, hour: 21, minute: 0 }
-    ).setZone('Europe/Madrid');
+      { year: 2025, month: 8, day: 17, hour: 17, minute: 30 },
+      { zone: 'Europe/Zurich' }
+    );
 
     function updateDigit(id, value) {
       const el = document.getElementById(id);
+      if (!el) return;
       if (el.textContent !== value) {
         el.style.transform = 'rotateX(180deg)';
         setTimeout(() => {
@@ -192,38 +129,34 @@
       }
     }
 
-    function updateCountdown(target, prefix) {
-      const now = DateTime.now().setZone('Europe/Madrid');
+    function updateCountdown(target) {
+      const now = DateTime.now().setZone('Europe/Zurich');
 
-      if (target < now) {
-        ['d1','d2','h1','h2','m1','m2','s1','s2'].forEach(id => updateDigit(id + prefix, '0'));
+      if (target <= now) {
+        ['d1','d2','h1','h2','m1','m2','s1','s2'].forEach(id => updateDigit(id, '0'));
         return;
       }
 
       const diff = target.diff(now, ['days', 'hours', 'minutes', 'seconds']).toObject();
 
-      const days = String(Math.floor(diff.days)).padStart(2, '0');
-      const hours = String(Math.floor(diff.hours)).padStart(2, '0');
-      const minutes = String(Math.floor(diff.minutes)).padStart(2, '0');
-      const seconds = String(Math.floor(diff.seconds)).padStart(2, '0');
+      const days = String(Math.floor(diff.days || 0)).padStart(2, '0');
+      const hours = String(Math.floor(diff.hours || 0)).padStart(2, '0');
+      const minutes = String(Math.floor(diff.minutes || 0)).padStart(2, '0');
+      const seconds = String(Math.floor(diff.seconds || 0)).padStart(2, '0');
 
-      updateDigit('d1' + prefix, days[0]);
-      updateDigit('d2' + prefix, days[1]);
-      updateDigit('h1' + prefix, hours[0]);
-      updateDigit('h2' + prefix, hours[1]);
-      updateDigit('m1' + prefix, minutes[0]);
-      updateDigit('m2' + prefix, minutes[1]);
-      updateDigit('s1' + prefix, seconds[0]);
-      updateDigit('s2' + prefix, seconds[1]);
+      updateDigit('d1', days[0]);
+      updateDigit('d2', days[1]);
+      updateDigit('h1', hours[0]);
+      updateDigit('h2', hours[1]);
+      updateDigit('m1', minutes[0]);
+      updateDigit('m2', minutes[1]);
+      updateDigit('s1', seconds[0]);
+      updateDigit('s2', seconds[1]);
     }
 
-    setInterval(() => {
-      updateCountdown(targetLeeds, 'b');
-      updateCountdown(targetArsenal, '');
-    }, 1000);
-
-    updateCountdown(targetLeeds, 'b');
-    updateCountdown(targetArsenal, '');
+    // Mise à jour chaque seconde + premier rendu immédiat
+    setInterval(() => updateCountdown(targetArsenal), 1000);
+    updateCountdown(targetArsenal);
   </script>
 </body>
 </html>
